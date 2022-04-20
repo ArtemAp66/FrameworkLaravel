@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MainController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +47,20 @@ Route::get('/level/{lvl}', function ($lvl) {
         return 'Король';
 });
 
+# Создаем правило проверки на прослойку
+# Внутри group будут маршруты
+Route::middleware('validationToken')->group(function () {
+    Route::get('project', function (){ return 'Project One';});
+});
+
+# Прописали маршрут до MainController метода test
+# ССылка http://localhost/main
+Route::get('main', [MainController::class, 'test']);
+
+Route::get('ip', [MainController::class, 'index']);
+
+# Маршрут с параметрами для id пользователя
+Route::get('user/{id}', [MainController::class, 'user'])->whereNumber('id');
 
 
 
