@@ -62,6 +62,10 @@ Route::get('ip', [MainController::class, 'index']);
 # Маршрут с параметрами для id пользователя
 Route::get('user/{id}', [MainController::class, 'user'])->whereNumber('id');
 
+Route::get('main', function (){
+   return view('viewTemplate');
+});
+
 
 
 
