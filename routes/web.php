@@ -66,6 +66,10 @@ Route::get('main', function (){
    return view('viewTemplate');
 });
 
+Route::get ('PageOne', [MainController::class, 'PageOneTemplate']);
+Route::post ('PageOne', [MainController::class, 'PageOneAccess']);
+Route::get('PageTwo', [MainController::class, 'PageTwoTemplate']);
+
 
 
 
